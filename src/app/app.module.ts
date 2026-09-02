@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClientModule,
+} from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RoleComponent } from './role/role.component';
@@ -26,6 +28,9 @@ import { StudentListComponent } from './student/student-list.component';
 import { SubjectListComponent } from './subject/subject-list.component';
 import { FacultyListComponent } from './faculty/faculty-list.component';
 import { TimetableListComponent } from './timetable/timetable-list.component';
+import { AuthServiceService } from './auth-service.service';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './login/signup.component';
 
 @NgModule({
   declarations: [
@@ -50,15 +55,18 @@ import { TimetableListComponent } from './timetable/timetable-list.component';
     StudentListComponent,
     SubjectListComponent,
     FacultyListComponent,
-    TimetableListComponent
+    TimetableListComponent,
+    LoginComponent,
+    SignupComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthServiceService,
+      multi: true,
+    }
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

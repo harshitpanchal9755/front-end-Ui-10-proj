@@ -1,49 +1,114 @@
-<div align="center">
-    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add Course</h1>
-    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update Course</h1>
+<div class="container py-4" style="max-width: 580px;">
+    <div class="card border-10 shadow-sm rounded-4 overflow-hidden">
 
-    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
-        <h3 style="margin: 0; color: red;" *ngIf="!form.error && form.message">{{ form.message }}</h3>
-        <h3 style="margin: 0; color: green;" *ngIf="form.error && form.message">{{ form.message }}</h3>
-    </div>
+        <!-- Header -->
+        <div class="card-header text-white border-0 py-3 px-4"
+            style="background: linear-gradient(135deg, #0d2137 0%, #1565c0 100%);">
 
+            <h5 class="mb-0 fw-bold" *ngIf="!form.data.id">
+                <i class="bi bi-journal-bookmark-fill me-2"></i>
+                Add Course
+            </h5>
 
-    <table>
+            <h5 class="mb-0 fw-bold" *ngIf="form.data.id > 0">
+                <i class="bi bi-journal-bookmark-fill me-2"></i>
+                Update Course
+            </h5>
+        </div>
 
-        <tr>
-            <th align="left">Name<span style="color: red;">*</span></th>
-            <td align="center"><input type="text" name="name" [(ngModel)]="form.data.name" placeholder="Enter the Course Name"></td>
-            <td style="color: red;">{{form.inputerror.name}}</td>
-        </tr>
+        <!-- Body -->
+        <div class="card-body px-4 py-4">
 
-        <tr>
-            <th>Duration<span style="color: red;">*</span></th>
-            <td>
-                <select name="duration" [(ngModel)]="form.data.duration" style="width: 170px;">
-                    <option value="undefined">----------Select----------</option>
+            <!-- Error Message -->
+            <div class="alert alert-danger py-2 mx-3 mt-3 d-flex justify-content-between align-items-center"
+                *ngIf="form.error && form.message">
+
+                <span>
+                    <i class="bi bi-exclamation-circle-fill me-2"></i>
+                    {{form.message}}
+                </span>
+
+                <button type="button" class="btn-close" (click)="form.message=''">
+                </button>
+
+            </div>
+
+            <!-- Success Message -->
+            <div class="alert alert-success py-2 mx-3 mt-3 d-flex justify-content-between align-items-center"
+                *ngIf="!form.error && form.message">
+
+                <span>
+                    <i class="bi bi-check-circle-fill me-2"></i>
+                    {{form.message}}
+                </span>
+
+                <button type="button" class="btn-close" (click)="form.message=''">
+                </button>
+
+            </div>
+            <!-- Name -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">
+                    Name <span class="text-danger">*</span>
+                </label>
+
+                <input type="text" name="name" [(ngModel)]="form.data.name" placeholder="Enter Course Name"
+                    class="form-control">
+
+                <div class="text-danger small mt-1">
+                    {{form.inputerror.name}}
+                </div>
+            </div>
+
+            <!-- Duration -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">
+                    Duration <span class="text-danger">*</span>
+                </label>
+
+                <select name="duration" [(ngModel)]="form.data.duration" class="form-select">
+
+                    <option value="undefined">------------Select------------</option>
                     <option [value]="1">1 Year</option>
                     <option [value]="2">2 Year</option>
                     <option [value]="3">3 Year</option>
                     <option [value]="4">4 Year</option>
                     <option [value]="5">5 Year</option>
-                
-                  </select>
-              </td>
+                </select>
 
-                    <td style="color: red;">{{form.inputerror.duration}}</td>
-        </tr>
+                <div class="text-danger small mt-1">
+                    {{form.inputerror.duration}}
+                </div>
+            </div>
 
-        <tr>
-            <th align="left">Description<span style="color: red;">*</span></th>
-            <td align="center"><textarea style="width: 167px;" name="description" rows="3" [(ngModel)]="form.data.description" placeholder="Enter the Description"></textarea></td>
-            <td style="color: red;">{{form.inputerror.description}}</td>
-        </tr>
+            <!-- Description -->
+            <div class="mb-4">
+                <label class="form-label fw-semibold">
+                    Description <span class="text-danger">*</span>
+                </label>
 
-        <tr>
-            <th></th>
-            <td align="left" colspan="2"><button (click)="submit()">save</button></td>
-        </tr>
+                <textarea name="description" [(ngModel)]="form.data.description" rows="3"
+                    placeholder="Enter Short Description" class="form-control" style="resize: none;">
+                </textarea>
 
-    </table>
+                <div class="text-danger small mt-1">
+                    {{form.inputerror.description}}
+                </div>
+            </div>
 
+            <!-- Buttons -->
+           <div class="d-flex gap-2 mt-4 pt-3 border-top">
+                <button class="btn btn-primary" (click)="submit()">
+                    <i class="bi bi-save me-1"></i>
+                    Save
+                </button>
+
+                <button type="button" (click)="forward('courseList')" class="btn btn-outline-secondary">
+                    <i class="bi bi-list-ul me-1"></i>
+                    List
+                </button>
+            </div>
+
+        </div>
+    </div>
 </div>

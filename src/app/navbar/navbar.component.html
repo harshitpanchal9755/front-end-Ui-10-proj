@@ -1,20 +1,157 @@
-<h3>Hii, Guest</h3>
-<a href="dashboard"><b>DashBoard</b></a> |
-<a href="role"><b>Role</b></a> |
-<a [routerLink]="['/roleList']"><b>Role List</b></a> |
-<a [routerLink]="['/user']"><b>Add User</b></a> |
-<a [routerLink]="['/userList']"><b>User List</b></a> |
-<a [routerLink]="['/college']"><b>Add College</b></a> |
-<a [routerLink]="['/collegeList']"><b>College List</b></a> |
-<a [routerLink]="['/student']"><b>Add Student</b></a> |
-<a [routerLink]="['/marksheet']"><b>Add Marksheet</b></a> |
-<a [routerLink]="['/marksheetList']"><b>Marksheet List</b></a> |
-<a [routerLink]="['/course']"><b>Add Course</b></a> |
-<a [routerLink]="['/courseList']"><b>Course List</b></a> |
-<a [routerLink]="['/subject']"><b>Add Subject</b></a> |
-<a [routerLink]="['/subjectList']"><b>Subject List</b></a> |
-<a [routerLink]="['/timetable']"><b>Add Timetable</b></a> |
-<a [routerLink]="['/timetableList']"><b>Timetable List</b></a> |
-<a [routerLink]="['/faculty']"><b>Add Faculty</b></a> |
-<a [routerLink]="['/faculty']"><b>Faculty List</b></a>
-<hr>
+<nav *ngIf="isLogin()" class="navbar navbar-expand-lg py-2 sticky-top"
+    style="background: linear-gradient(135deg, #0d2137 0%, #1565c0 100%); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+    <div class="container-fluid px-4"  style="background: linear-gradient(135deg, #0d2137 0%, #1565c0 100%); min-height: 58px;">
+   <a routerLink="/dashboard">
+      <img src="assets/rays-logo.jpg" alt="ORS" height="80" class="rounded" style="object-fit: contain;">
+   </a>
+
+        <!-- Mobile Toggle Button -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <i class="bi bi-list text-white" style="font-size: 1.5rem;"></i>
+        </button>
+
+        <!-- Navigation Menu -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ms-auto gap-2">
+                <!-- My Profile -->
+                <li class="nav-item">
+                    <a (click)="forward()" class="nav-link text-white px-3 py-2" style="cursor: pointer; font-size: 0.9rem;">
+                        <i class="bi bi-person-circle me-1"></i>My Profile
+                    </a>
+                </li>
+
+                <!-- User Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white px-3 py-2 dropdown-toggle" href="#" data-bs-toggle="dropdown" style="font-size: 0.9rem;">
+                        <i class="bi bi-people me-1"></i>User
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" [routerLink]="['/user']"><i class="bi bi-plus-circle me-1"></i>Add User</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/userList']"><i class="bi bi-list-ul me-1"></i>User List</a></li>
+                    </ul>
+                </li>
+
+                <!-- Role Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white px-3 py-2 dropdown-toggle" href="#" data-bs-toggle="dropdown" style="font-size: 0.9rem;">
+                        <i class="bi bi-shield-check me-1"></i>Role
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" [routerLink]="['/role']"><i class="bi bi-plus-circle me-1"></i>Add Role</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/roleList']"><i class="bi bi-list-ul me-1"></i>Role List</a></li>
+                    </ul>
+                </li>
+
+                <!-- College Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white px-3 py-2 dropdown-toggle" href="#" data-bs-toggle="dropdown" style="font-size: 0.9rem;">
+                        <i class="bi bi-building me-1"></i>College
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" [routerLink]="['/college']"><i class="bi bi-plus-circle me-1"></i>Add College</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/collegeList']"><i class="bi bi-list-ul me-1"></i>College List</a></li>
+                    </ul>
+                </li>
+
+                <!-- Student Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white px-3 py-2 dropdown-toggle" href="#" data-bs-toggle="dropdown" style="font-size: 0.9rem;">
+                        <i class="bi bi-person me-1"></i>Student
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" [routerLink]="['/student']"><i class="bi bi-plus-circle me-1"></i>Add Student</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/studentList']"><i class="bi bi-list-ul me-1"></i>Student List</a></li>
+                    </ul>
+                </li>
+
+                <!-- Marksheet Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white px-3 py-2 dropdown-toggle" href="#" data-bs-toggle="dropdown" style="font-size: 0.9rem;">
+                        <i class="bi bi-file-earmark-text me-1"></i>Marksheet
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" [routerLink]="['/marksheet']"><i class="bi bi-plus-circle me-1"></i>Add Marksheet</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/marksheetList']"><i class="bi bi-list-ul me-1"></i>Marksheet List</a></li>
+                    </ul>
+                </li>
+
+                <!-- Course Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white px-3 py-2 dropdown-toggle" href="#" data-bs-toggle="dropdown" style="font-size: 0.9rem;">
+                        <i class="bi bi-book me-1"></i>Course
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" [routerLink]="['/course']"><i class="bi bi-plus-circle me-1"></i>Add Course</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/courseList']"><i class="bi bi-list-ul me-1"></i>Course List</a></li>
+                    </ul>
+                </li>
+
+                <!-- Subject Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white px-3 py-2 dropdown-toggle" href="#" data-bs-toggle="dropdown" style="font-size: 0.9rem;">
+                        <i class="bi bi-journal-text me-1"></i>Subject
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" [routerLink]="['/subject']"><i class="bi bi-plus-circle me-1"></i>Add Subject</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/subjectList']"><i class="bi bi-list-ul me-1"></i>Subject List</a></li>
+                    </ul>
+                </li>
+
+                <!-- Timetable Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white px-3 py-2 dropdown-toggle" href="#" data-bs-toggle="dropdown" style="font-size: 0.9rem;">
+                        <i class="bi bi-calendar3 me-1"></i>Timetable
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" [routerLink]="['/timetable']"><i class="bi bi-plus-circle me-1"></i>Add Timetable</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/timetableList']"><i class="bi bi-list-ul me-1"></i>Timetable List</a></li>
+                    </ul>
+                </li>
+
+                <!-- Faculty Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white px-3 py-2 dropdown-toggle" href="#" data-bs-toggle="dropdown" style="font-size: 0.9rem;">
+                        <i class="bi bi-person-badge me-1"></i>Faculty
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" [routerLink]="['/faculty']"><i class="bi bi-plus-circle me-1"></i>Add Faculty</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/facultyList']"><i class="bi bi-list-ul me-1"></i>Faculty List</a></li>
+                    </ul>
+                </li>
+
+                <!-- User Profile Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white px-3 py-2 dropdown-toggle fw-bold" href="#" data-bs-toggle="dropdown" style="font-size: 0.95rem;">
+                        <i class="bi bi-person-circle me-2"></i>Hi, {{form.data.fname}} (<span style="color: #ffc107;">{{form.data.role}}</span>)
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark shadow-sm">
+                        <li>
+                            <a (click)="logout()" class="dropdown-item text-danger" style="cursor: pointer;">
+                                <i class="bi bi-box-arrow-right me-2"></i>Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<nav *ngIf="!isLogin()" class="navbar navbar-expand-lg py-2 sticky-top"
+    style="background: linear-gradient(135deg, #0d2137 0%, #1565c0 100%); box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+    <div class="container-fluid px-4">
+        <!-- Logo with Dashboard Link -->
+        <a [routerLink]="['/dashboard']" class="d-flex align-items-center text-decoration-none me-3">
+            <img src="assets/rays-logo.jpg" alt="ORS Logo" height="50" class="rounded" style="object-fit: contain;">
+            <span class="text-white fw-bold ms-2" style="font-size: 1.1rem;">ORS</span>
+        </a>
+        <div class="ms-auto d-flex align-items-center gap-2">
+            <a [routerLink]="['/dashboard']" class="btn btn-outline-light btn-sm px-3">
+                <i class="bi bi-house-fill me-1"></i>Dashboard
+            </a>
+            <a [routerLink]="['/login']" class="btn btn-light btn-sm px-3" style="color: #0d2137;">
+                <i class="bi bi-box-arrow-in-right me-1"></i>Login
+            </a>
+        </div>
+    </div>
+</nav>

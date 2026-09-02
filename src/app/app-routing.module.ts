@@ -18,146 +18,167 @@ import { CourseListComponent } from './course/course-list.component';
 import { SubjectListComponent } from './subject/subject-list.component';
 import { TimetableListComponent } from './timetable/timetable-list.component';
 import { FacultyListComponent } from './faculty/faculty-list.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './login/signup.component';
+import { StudentListComponent } from './student/student-list.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/welcome',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    redirectTo: '/dashboard',
+    
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
   },
+
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+
+  {
+    path: 'signup',
+    component: SignupComponent,
+  },
+
   {
     path: 'role',
-    component: RoleComponent
+    component: RoleComponent,
   },
 
   {
     path: 'roleList',
-    component: RoleListComponent
+    component: RoleListComponent,
   },
 
   {
     path: 'role/:id',
-    component: RoleComponent
+    component: RoleComponent,
   },
 
   {
     path: 'user',
-    component: UserComponent
+    component: UserComponent,
   },
 
   {
-    path: "userList",
-    component: UserListComponent
+    path: 'userList',
+    component: UserListComponent,
   },
 
-   {
-    path: "user/:id",
-    component: UserComponent
+  {
+    path: 'user/:id',
+    component: UserComponent,
   },
-
 
   {
     path: 'college',
-    component: CollegeComponent
+    component: CollegeComponent,
   },
 
   {
     path: 'collegeList',
-    component: CollegeListComponent
+    component: CollegeListComponent,
   },
 
   {
     path: 'college/:id',
-    component: CollegeComponent
+    component: CollegeComponent,
   },
 
   {
     path: 'student',
-    component: StudentComponent
+    component: StudentComponent,
+  },
+  {
+    path: 'studentList',
+    component: StudentListComponent,
+  },
+
+  {
+    path: 'student/:id',
+    component: StudentComponent,
   },
   {
     path: 'marksheet',
-    component: MarksheetComponent
+    component: MarksheetComponent,
   },
 
   {
     path: 'marksheetList',
-    component: MarksheetListComponent
+    component: MarksheetListComponent,
   },
 
   {
     path: 'marksheet/:id',
-    component: MarksheetComponent
+    component: MarksheetComponent,
   },
-
   {
     path: 'course',
-    component: CourseComponent
+    component: CourseComponent,
   },
 
   {
     path: 'courseList',
-    component: CourseListComponent
+    component: CourseListComponent,
   },
 
   {
     path: 'course/:id',
-    component: CourseComponent
+    component: CourseComponent,
   },
 
   {
     path: 'subject',
-    component: SubjectComponent
+    component: SubjectComponent,
   },
 
   {
     path: 'subjectList',
-    component: SubjectListComponent
+    component: SubjectListComponent,
   },
 
   {
     path: 'subject/:id',
-    component: SubjectComponent
+    component: SubjectComponent,
   },
 
   {
     path: 'timetable',
-    component: TimetableComponent
+    component: TimetableComponent,
   },
 
   {
     path: 'timetableList',
-    component: TimetableListComponent
+    component: TimetableListComponent,
   },
 
   {
     path: 'timetable/:id',
-    component: TimetableComponent
+    component: TimetableComponent,
   },
 
   {
     path: 'faculty',
-    component: FacultyComponent
+    component: FacultyComponent,
   },
 
   {
     path: 'facultyList',
-    component: FacultyListComponent
+    component: FacultyListComponent,
   },
 
   {
     path: 'faculty/:id',
-    component: FacultyComponent
+    component: FacultyComponent,
   },
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

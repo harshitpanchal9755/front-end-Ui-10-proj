@@ -6,7 +6,6 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-timetable-list',
   templateUrl: './timetable-list.component.html',
-  styleUrls: ['./timetable-list.component.css']
 })
 export class TimetableListComponent extends BaseListCtl{
 

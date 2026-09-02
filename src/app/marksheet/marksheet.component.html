@@ -1,60 +1,142 @@
+<div class="container py-4" style="max-width: 580px;">
+    <div class="card border-10 shadow-sm rounded-4 overflow-hidden">
 
+        <!-- Header -->
+        <div class="card-header text-white border-0 py-3 px-4"
+            style="background: linear-gradient(135deg, #0d2137 0%, #1565c0 100%);">
 
-<div align="center">
-    <h1 *ngIf="!form.data.id" align="center" style="margin-bottom: 5px; color: navy">Add Marksheet</h1>
-    <h1 *ngIf="form.data.id>0" align="center" style="margin-bottom: 5px; color: navy">Update Marksheet</h1>
+            <h5 class="mb-0 fw-bold" *ngIf="!form.data.id">
+                <i class="bi bi-journal-text me-2"></i>Add Marksheet
+            </h5>
 
-    <div style="height: 20px; margin-bottom: 10px; text-align: center;">
-        <h3 style="margin: 0; color: green" *ngIf="!form.error && form.message">{{ form.message }}</h3>
-        <h3 style="margin: 0; color: red;" *ngIf="form.error && form.message">{{ form.message }}</h3>
-    </div>
+            <h5 class="mb-0 fw-bold" *ngIf="form.data.id > 0">
+                <i class="bi bi-journal-text me-2"></i>
+                Update Marksheet
+            </h5>
+        </div>
 
-    <table>
-        <tr>
-            <th align="left">Roll No<span style="color: red">*</span></th>
-            <td><input type="text" name="rollNo" [(ngModel)]="form.data.rollNo" maxlength="5" placeholder="Enter Roll No"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.rollNo}}</td>
-        </tr>
+        <!-- Body -->
+        <div class="card-body px-4 py-4">
 
-        <tr>
-            <th align="left">Name<span style="color: red">*</span></th>
-            <td>
-                <select name="studentId" [(ngModel)]="form.data.studentId" style="width: 170px;">
+            <!-- Error Message -->
+            <div class="alert alert-danger py-2 mx-3 mt-3 d-flex justify-content-between align-items-center"
+                *ngIf="form.error && form.message">
+
+                <span>
+                    <i class="bi bi-exclamation-circle-fill me-2"></i>
+                    {{form.message}}
+                </span>
+
+                <button type="button" class="btn-close" (click)="form.message=''">
+                </button>
+
+            </div>
+
+            <!-- Success Message -->
+            <div class="alert alert-success py-2 mx-3 mt-3 d-flex justify-content-between align-items-center"
+                *ngIf="!form.error && form.message">
+
+                <span>
+                    <i class="bi bi-check-circle-fill me-2"></i>
+                    {{form.message}}
+                </span>
+
+                <button type="button" class="btn-close" (click)="form.message=''">
+                </button>
+
+            </div>
+
+            <!-- Roll No -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">
+                    Roll No <span class="text-danger">*</span>
+                </label>
+
+                <input type="text" name="rollNo" [(ngModel)]="form.data.rollNo" maxlength="5"
+                    placeholder="Enter Roll No" class="form-control">
+
+                <div class="text-danger small mt-1">
+                    {{form.inputerror.rollNo}}
+                </div>
+            </div>
+
+            <!-- Student Name -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">
+                    Name <span class="text-danger">*</span>
+                </label>
+
+                <select name="studentId" [(ngModel)]="form.data.studentId" class="form-select">
+
                     <option value="undefined">------------Select------------</option>
-                    <option *ngFor="let obj of form.preload.studentList" [value]="obj.key">{{obj.value}}</option>
+
+                    <option *ngFor="let obj of form.preload.studentList" [value]="obj.key">
+                        {{obj.value}}
+                    </option>
                 </select>
-            </td>
-            <td style="position: fixed; color: red;">{{form.inputerror.studentId}}</td>
-        </tr>
 
-        <tr>
-            <th align="left">Physics<span style="color: red">*</span></th>
-            <td><input type="text" name="physics" [(ngModel)]="form.data.physics" maxlength="3" placeholder="Enter Physics Marks"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.physics}}</td>
-        </tr>
+                <div class="text-danger small mt-1">
+                    {{form.inputerror.studentId}}
+                </div>
+            </div>
 
-        <tr>
-            <th align="left">Chemistry<span style="color: red">*</span></th>
-            <td><input type="text" name="chemistry" [(ngModel)]="form.data.chemistry" maxlength="3" placeholder="Enter Chemistry Marks"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.chemistry}}</td>
-        </tr>
+            <!-- Physics -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">
+                    Physics <span class="text-danger">*</span>
+                </label>
 
-        <tr>
-            <th align="left">Maths<span style="color: red">*</span></th>
-            <td><input type="text" name="maths" [(ngModel)]="form.data.maths" maxlength="3" placeholder="Enter Maths Marks"></td>
-            <td style="position: fixed; color: red;">{{form.inputerror.maths}}</td>
-        </tr>
+                <input type="text" name="physics" [(ngModel)]="form.data.physics" maxlength="3"
+                    placeholder="Enter Physics Marks" class="form-control">
 
-        <tr></tr>
+                <div class="text-danger small mt-1">
+                    {{form.inputerror.physics}}
+                </div>
+            </div>
 
-        <tr>
-            <th></th>
-            <td align="left" colspan="2">
-                <button (click)="submit()">save</button> &nbsp;
-                
-            </td>
-        </tr>
-    </table>
+            <!-- Chemistry -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">
+                    Chemistry <span class="text-danger">*</span>
+                </label>
+
+                <input type="text" name="chemistry" [(ngModel)]="form.data.chemistry" maxlength="3"
+                    placeholder="Enter Chemistry Marks" class="form-control">
+
+                <div class="text-danger small mt-1">
+                    {{form.inputerror.chemistry}}
+                </div>
+            </div>
+
+            <!-- Maths -->
+            <div class="mb-4">
+                <label class="form-label fw-semibold">
+                    Maths <span class="text-danger">*</span>
+                </label>
+
+                <input type="text" name="maths" [(ngModel)]="form.data.maths" maxlength="3"
+                    placeholder="Enter Maths Marks" class="form-control">
+
+                <div class="text-danger small mt-1">
+                    {{form.inputerror.maths}}
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex gap-2">
+
+                <button type="button" (click)="submit()" class="btn btn-primary">
+                    <i class="bi bi-save me-1"></i>
+                    Save
+                </button>
+
+                <button type="button" (click)="forward('marksheetList')" class="btn btn-outline-secondary">
+                    <i class="bi bi-list-ul me-1"></i>
+                    List
+                </button>
+
+            </div>
+
+        </div>
+    </div>
 </div>
-
-<app-footer></app-footer>
