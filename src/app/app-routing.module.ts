@@ -21,6 +21,9 @@ import { FacultyListComponent } from './faculty/faculty-list.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './login/signup.component';
 import { StudentListComponent } from './student/student-list.component';
+import { ForgotpasswordComponent } from './login/forgotpassword.component';
+import { MyprofileComponent } from './user/myprofile.component';
+import { ChangepasswordComponent } from './user/changepassword.component';
 
 const routes: Routes = [
   {
@@ -175,10 +178,31 @@ const routes: Routes = [
     path: 'faculty/:id',
     component: FacultyComponent,
   },
+
+  {
+    path: 'login/forgotpassword',
+    component: ForgotpasswordComponent
+  },
+
+  {
+    path: 'myprofile',
+    component: MyprofileComponent
+  },
+
+   {
+    path: 'myprofile/:Id',
+    component: MyprofileComponent
+   },
+
+   {
+    path: 'changepassword',
+    component: ChangepasswordComponent
+   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true})],
   exports: [RouterModule],
+  
 })
 export class AppRoutingModule {}

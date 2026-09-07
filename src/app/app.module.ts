@@ -31,6 +31,9 @@ import { TimetableListComponent } from './timetable/timetable-list.component';
 import { AuthServiceService } from './auth-service.service';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './login/signup.component';
+import { ForgotpasswordComponent } from './login/forgotpassword.component';
+import { MyprofileComponent } from './user/myprofile.component';
+import { ChangepasswordComponent } from './user/changepassword.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +61,9 @@ import { SignupComponent } from './login/signup.component';
     TimetableListComponent,
     LoginComponent,
     SignupComponent,
+    ForgotpasswordComponent,
+    MyprofileComponent,
+    ChangepasswordComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

@@ -14,7 +14,7 @@
 
          <!-- Graduation Cap Icon -->
          <div style="font-size: 50px; margin-bottom: 15px;">
-            <i class="bi bi-mortarboard"
+            <i class="bi bi-mortarboard-fill"
                style="
                   color: rgba(255,255,255,0.7);
                   font-size: 60px;
@@ -84,7 +84,7 @@
                style="font-size: 0.95rem;">
 
                <i
-                  class="bi bi-person me-2"
+                  class="bi bi-person-fill me-2"
                   style="color: #666;">
                </i>
 
@@ -131,7 +131,7 @@
                style="font-size: 0.95rem;">
 
                <i
-                  class="bi bi-lock me-2"
+                  class="bi bi-lock-fill me-2"
                   style="color: #666;">
                </i>
 
@@ -205,24 +205,20 @@
                class="text-success fw-semibold"
                style="text-decoration: none; cursor: pointer;">
 
-               <i class="bi bi-person-plus me-1"></i>
+               <i class="bi bi-person-plus-fill me-1"></i>
 
                Sign Up
 
             </a>
 
 
-            <!-- Forgot Password -->
-            <a
-               href="#"
-               class="text-primary fw-semibold"
-               style="text-decoration: none;">
-
-               <i class="bi bi-question-circle me-1"></i>
-
-               Forgot my password
-
-            </a>
+              <!-- Forgot Password -->
+            <div class="text-center">
+                <a [routerLink]="['/login/forgotpassword']" class="text-decoration-none fw-semibold">
+                    <i class="bi bi-key-fill me-1"></i>
+                    Forgot my password?
+                </a>
+            </div>
 
          </div>
 
