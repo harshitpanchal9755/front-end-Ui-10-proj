@@ -270,7 +270,7 @@
       <div class="collapse navbar-collapse" id="mainNav" *ngIf="!isLogin()"
          class="d-flex align-items-center gap-2 ms-auto">
 
-         <span class="text-light fw-semibold">Hi, Guest
+         <span class="text-light fw-semibold"><!--Hi, Guest lang--> {{'Hi, Guest' | translate}}
          </span>
 
          <a class="btn btn-sm btn-outline-info px-3" [routerLink]="['/dashboard']">
@@ -285,6 +285,25 @@
 
       </div>
 
+   </div>
+
+   <!--language DropDown-->
+
+   <div class="dropdown me-3">
+      <button class="btn btn-sm btn-outline-light dropdown-toggle px-3" type="button" data-bs-toggle="dropdown"
+         aria-expanded="false"> <i class="bi bi-translate me-2"></i>Language</button>
+      <ul class="dropdown-menu dropdown-menu-end shadow border-10 rounded-3" style="color: navy;">
+         <li>
+            <a class="dropdown-item" (click)="changeLocale('en')">
+               <!--English lang--> {{'English' | translate}}
+            </a>
+         </li>
+         <li>
+            <a class="dropdown-item" (click)="changeLocale('hi')">
+               <!--हिन्दी lang--> {{'Hindi' | translate}}
+            </a>
+         </li>
+      </ul>
    </div>
 
    

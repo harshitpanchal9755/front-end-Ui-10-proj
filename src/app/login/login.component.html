@@ -23,15 +23,14 @@
          </div>
 
          <!-- Title -->
-         <h2 class="text-white fw-bold mb-1"
-             style="font-size: 2rem;">
-            Login
+         <h2 class="text-white fw-bold mb-1">
+            {{'Login' | translate}}
          </h2>
 
          <!-- Subtitle -->
          <p class="text-white-50 mb-0"
             style="font-size: 1rem;">
-            Online Result System
+            <!---Online Result System--> {{'Online Result System' | translate}}
          </p>
 
       </div>
@@ -88,7 +87,7 @@
                   style="color: #666;">
                </i>
 
-               LOGIN ID
+               <!--Login Id lang--> {{'Login Id' | translate}}
 
                <span style="color: red;">*</span>
 
@@ -116,7 +115,7 @@
 
                <i class="bi bi-exclamation-circle me-1"></i>
 
-               {{ form.inputerror.loginId }}
+               {{ form.inputerror.loginId}}
 
             </small>
 
@@ -135,7 +134,7 @@
                   style="color: #666;">
                </i>
 
-               PASSWORD
+                <!--password lang--> {{'Password' | translate}}
 
                <span style="color: red;">*</span>
 
@@ -189,7 +188,7 @@
 
             <i class="bi bi-box-arrow-in-right me-2"></i>
 
-            Sign In
+            <!--sign In--> {{'Sign In' | translate}}
 
          </button>
 
@@ -207,7 +206,7 @@
 
                <i class="bi bi-person-plus-fill me-1"></i>
 
-               Sign Up
+               <!--sign Up--> {{'Sign Up' | translate}}
 
             </a>
 
@@ -216,7 +215,7 @@
             <div class="text-center">
                 <a [routerLink]="['/login/forgotpassword']" class="text-decoration-none fw-semibold">
                     <i class="bi bi-key-fill me-1"></i>
-                    Forgot my password?
+                   <!--Forgot Password--> {{'Forgot My Password?' | translate}}
                 </a>
             </div>
 
