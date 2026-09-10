@@ -190,7 +190,7 @@ const routes: Routes = [
   },
 
    {
-    path: 'myprofile/:Id',
+    path: 'myprofile/:id',
     component: MyprofileComponent
    },
 

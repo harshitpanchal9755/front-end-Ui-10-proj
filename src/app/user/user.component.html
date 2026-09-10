@@ -152,7 +152,13 @@
 
             </div>
 
-              <div class="mb-3"><label class="form-label fw-bold">Image<span style="color: red;">*</span></label><input type="file" name="profileImage" (change)="onFileSelect($event)" class="form-control" accept="image/*"></div>
+              <div class="mb-3"><label class="form-label fw-bold">Image<span style="color: red;">*</span></label>
+                 
+                <div class="mb-2">
+
+        <img [src]="form.data.imageId ? 'http://localhost:8080/User/profilePic/' + form.data.id : 'assets/default.jpg'" class="img-thumbnail" style="width:100px; height:100px; object-fit:cover;" alt="Profile Image" onerror="this.onerror=null; this.src='assets/default.jpg';"> </div>
+
+                <input type="file" name="profileImage" (change)="onFileSelect($event)" class="form-control" accept="image/*"></div>
 
             <div class="d-flex gap-2 mt-4 pt-3 border-top">
                 <button class="btn btn-primary" (click)="submit()">

@@ -71,6 +71,7 @@ export class BaseCtl implements OnInit {
         this.serviceLocator.httpService.get(_self.api.get + "/" + _self.form.data.id, function (res: any) {
             if (res.success) {
                 _self.form.data = res.result.data;
+                _self.form.data.dob = res.rsult.data.dob.subtring(0,9);
             } else {
                 _self.form.error = true;
                 _self.form.message = res.result.message;
