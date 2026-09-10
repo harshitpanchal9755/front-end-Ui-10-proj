@@ -152,6 +152,8 @@
 
             </div>
 
+              <div class="mb-3"><label class="form-label fw-bold">Image<span style="color: red;">*</span></label><input type="file" name="profileImage" (change)="onFileSelect($event)" class="form-control" accept="image/*"></div>
+
             <div class="d-flex gap-2 mt-4 pt-3 border-top">
                 <button class="btn btn-primary" (click)="submit()">
                     <i class="bi bi-save me-1"></i>
